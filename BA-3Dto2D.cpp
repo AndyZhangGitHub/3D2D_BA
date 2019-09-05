@@ -1,10 +1,6 @@
 /****************************
- * 题目：给定一组世界坐标系下的3D点(p3d.txt)以及它在相机中对应的坐标(p2d.txt)，以及相机的内参矩阵。
+ * 给定一组世界坐标系下的3D点(p3d.txt)以及它在相机中对应的坐标(p2d.txt)，以及相机的内参矩阵。
  * 使用bundle adjustment 方法（g2o库实现）来估计相机的位姿T。初始位姿T为单位矩阵。
- *
-* 本程序学习目标：
- * 熟悉g2o库编写流程，熟悉顶点定义方法。
- *
 ****************************/
 
 #include <vector>
@@ -126,7 +122,7 @@ void bundleAdjustment (
 
     // 第5步：定义图的顶点和边。并添加到SparseOptimizer中
 	
-	// ----------------------开始你的代码：设置并添加顶点，初始位姿为单位矩阵
+	// 设置并添加顶点，初始位姿为单位矩阵
 
     g2o::VertexSE3Expmap* pose = new g2o::VertexSE3Expmap();
     Eigen::Matrix3d R  ;
@@ -147,8 +143,7 @@ void bundleAdjustment (
         point->setMarginalized(true);
         optimizer.addVertex(point);
     }
-    
-	// ----------------------结束你的代码
+
 	
 	
     // 设置相机内参
